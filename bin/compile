@@ -60,9 +60,14 @@ fi
 if [ "${SLN}" != "" ]; then
   echo "-----> Compiling Mono application"
 
+  ls -a ${CACHE_DIR}
   # need Mono in its expected location for xbuild to work
   ln -s "${CACHE_DIR}/mono" /app
   export PATH="/app/mono/bin:${PATH}"
+  echo "---linked"
+  ls -a /app
+  echo "start xbuild"
+  ls -a /app/mono/bin
 
   xbuild /property:Configuration=Release ${SLN} | indent
 fi
