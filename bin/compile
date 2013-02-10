@@ -66,8 +66,10 @@ if [ "${SLN}" != "" ]; then
   export PATH="/app/mono/bin:${PATH}"
   echo "---linked"
   ls -a /app
-  echo "start xbuild"
-  ls -a /app/mono/bin
+  echo "solution :"
+  echo ${SLN}
+  mono -V
+  xbuild -V
 
   xbuild /property:Configuration=Release ${SLN} | indent
 fi
